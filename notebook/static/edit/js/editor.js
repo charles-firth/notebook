@@ -277,41 +277,9 @@ function(
                     // In some cases the filesystem reports an inconsistent time,
                     // so we allow 0.5 seconds difference before complaining.
                     if ((last_modified.getTime() - that.last_modified.getTime()) > 500) {  // 500 ms
-                        console.warn("Last saving was done on `"+that.last_modified+"`("+that._last_modified+"), "+
+                        console.warn("IGNORING - Last saving was done on `"+that.last_modified+"`("+that._last_modified+"), "+
                                      "while the current file seem to have been saved on `"+data.last_modified+"`");
-                        if (that._changed_on_disk_dialog !== null) {
-                            // since the modal's event bindings are removed when destroyed, we reinstate
-                            // save & reload callbacks on the confirmation & reload buttons
-                            that._changed_on_disk_dialog.find('.save-confirm-btn').click(_save);
-                            that._changed_on_disk_dialog.find('.btn-warning').click(function () {window.location.reload()});
-                            
-                            // redisplay existing dialog
-                            that._changed_on_disk_dialog.modal('show');
-                        } else {
-                            // create new dialog
-                            that._changed_on_disk_dialog = dialog.modal({
-                                keyboard_manager: that.keyboard_manager,
-                                title: i18n.msg._("File changed"),
-                                body: i18n.msg._("The file has changed on disk since the last time we opened or saved it. "
-                                        + "Do you want to overwrite the file on disk with the version open here, or load "
-                                        + "the version on disk (reload the page)?"),
-                                buttons: {
-                                    Reload: {
-                                        class: 'btn-warning',
-                                        click: function () {
-                                            window.location.reload();
-                                        }
-                                    },
-                                    Cancel: {},
-                                    Overwrite: {
-                                        class: 'btn-danger save-confirm-btn',
-                                        click: function () {
-                                            _save();
-                                        }
-                                    },
-                                }
-                            });
-                        }
+                        return _save
                     } else {
                         return _save();
                     }
