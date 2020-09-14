@@ -14,7 +14,7 @@ General Guidelines
 For general documentation about contributing to Jupyter projects, see the
 `Project Jupyter Contributor Documentation`__.
 
-__ https://jupyter.readthedocs.io/en/latest/contributor/content-contributor.html
+__ https://jupyter.readthedocs.io/en/latest/contributing/content-contributor.html
 
 
 Setting Up a Development Environment
@@ -80,9 +80,9 @@ If you do not see that your Jupyter Notebook is not running on dev mode, it's po
 running other instances of Jupyter Notebook. You can try the following steps:
 
 1. Uninstall all instances of the notebook package. These include any installations you made using
-   pip or conda
-2. Run ``python3 -m pip install -e .`` in the notebook repository to install the notebook from there
-3. Run ``npm run build`` to make sure the Javascript and CSS are updated and compiled
+   pip or conda.
+2. Run ``python3 -m pip install -e .`` in the notebook repository to install the notebook from there.
+3. Run ``npm run build`` to make sure the Javascript and CSS are updated and compiled.
 4. Launch with ``python3 -m notebook --port 8989``, and check that the browser is pointing to ``localhost:8989``
    (rather than the default 8888). You don't necessarily have to launch with port 8989, as long as you use
    a port that is neither the default nor in use, then it should be fine.
@@ -201,4 +201,4 @@ Windows users can find ``make.bat`` in the ``docs`` folder.
 
 You should also have a look at the `Project Jupyter Documentation Guide`__.
 
-__ https://jupyter.readthedocs.io/en/latest/contrib_docs/index.html
+__ https://jupyter.readthedocs.io/en/latest/contributing/docs-contributions/index.html
